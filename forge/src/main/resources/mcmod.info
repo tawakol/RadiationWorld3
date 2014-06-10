@@ -1,0 +1,16 @@
+[
+{
+  "modid": "RadiationMod",
+  "name": "Radiation Mod",
+  "description": "Super Awesome Radiation clearing game",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
