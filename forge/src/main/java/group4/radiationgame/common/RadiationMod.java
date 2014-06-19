@@ -1,5 +1,6 @@
 package group4.radiationgame.common;
 
+import group4.radiationgame.block.InstructionBook;
 import group4.radiationgame.block.SourceRadiationBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -12,6 +13,9 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemWritableBook;
+import net.minecraft.nbt.NBTTagList;
 
 @Mod(modid = RadiationMod.MODID, version = RadiationMod.VERSION)
 public class RadiationMod
@@ -44,8 +48,14 @@ public class RadiationMod
 	
 	//register the new block to the game.
 	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
-    	
-    	
+  
+    	InstructionBook myBook = new InstructionBook();
+    	myBook.setCreativeTab(CreativeTabs.tabTools);
+    	myBook.setUnlocalizedName("myBook");
+    	myBook.setTextureName("book_normal");
+    	NBTTagList bookTagList = new NBTTagList();
+    	bookTagList = myBook.putInstructions(bookTagList);
+    	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
 
     	
     }
