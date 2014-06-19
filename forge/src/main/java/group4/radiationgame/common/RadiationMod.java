@@ -2,6 +2,7 @@ package group4.radiationgame.common;
 
 import group4.radiationgame.block.InstructionBook;
 import group4.radiationgame.block.SourceRadiationBlock;
+import group4.radiationgame.block.SubRadiationBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -46,13 +47,19 @@ public class RadiationMod
 		//Texture picture for the block is not showing correctly now.
 		.setBlockTextureName("radiationgame:SourceRadiationBlock");
 	
+    	
+    	Block SubRadBlock = new SubRadiationBlock();
+    	
+    	
 	//register the new block to the game.
 	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
+<<<<<<< .mine
+	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
+=======
   
     	InstructionBook myBook = new InstructionBook();
+>>>>>>> .r9
     	
     	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
-
-    	
     }
 }
