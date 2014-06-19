@@ -50,11 +50,7 @@ public class RadiationMod
 	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
   
     	InstructionBook myBook = new InstructionBook();
-    	myBook.setCreativeTab(CreativeTabs.tabTools);
-    	myBook.setUnlocalizedName("myBook");
-    	myBook.setTextureName("book_normal");
-    	NBTTagList bookTagList = new NBTTagList();
-    	bookTagList = myBook.putInstructions(bookTagList);
+    	
     	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
 
     	
