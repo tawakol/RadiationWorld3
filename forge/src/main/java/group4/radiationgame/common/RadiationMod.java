@@ -53,12 +53,9 @@ public class RadiationMod
     	
 	//register the new block to the game.
 	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
-<<<<<<< .mine
 	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
-=======
   
     	InstructionBook myBook = new InstructionBook();
->>>>>>> .r9
     	
     	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
     }
