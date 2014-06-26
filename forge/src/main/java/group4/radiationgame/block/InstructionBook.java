@@ -1,5 +1,6 @@
 package group4.radiationgame.block;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.world.World;
-public class InstructionBook extends ItemWritableBook{
+public class InstructionBook extends ItemEditableBook{
 	
 	public InstructionBook(){
 		super();
@@ -35,6 +36,8 @@ public class InstructionBook extends ItemWritableBook{
 	
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
+    	GuiScreenBook GUI = new GuiScreenBook( par3EntityPlayer, par1ItemStack, true);
+		GUI.initGui();
     	System.out.println(par1ItemStack);
         par3EntityPlayer.displayGUIBook(par1ItemStack);
         return par1ItemStack;
@@ -47,8 +50,9 @@ public class InstructionBook extends ItemWritableBook{
 		bookTagList = putInstructions(bookTagList);
 		
 		itemStack.setTagInfo("pages", bookTagList);
-		//itemStack.setTagInfo("author", new NBTTagString("Group 6"));
-		//itemStack.setTagInfo("title", new NBTTagString("Radiation Cleansing Guide"));
+		itemStack.setTagInfo("author", new NBTTagString("Group 6"));
+		itemStack.setTagInfo("title", new NBTTagString("Radiation Cleansing Guide"));
+		
 		
 	}
 	
