@@ -43,12 +43,11 @@ public class RadiationMod
 		.setHardness(0.5F)
 		.setStepSound(Block.soundTypeMetal)
 		.setCreativeTab(CreativeTabs.tabBlock)
-		
-		//Texture picture for the block is not showing correctly now.
 		.setBlockTextureName("radiationgame:SourceRadiationBlock");
 	
-    	
-    	Block SubRadBlock = new SubRadiationBlock();
+    	// create subRadiation block
+    	Block SubRadBlock = new SubRadiationBlock()
+    	.setBlockTextureName("radiationgame:SubRadiationBlock");
     	
     	
 	//register the new block to the game.
