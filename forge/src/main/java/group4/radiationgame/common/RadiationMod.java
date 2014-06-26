@@ -38,7 +38,7 @@ public class RadiationMod
     	
     	RadiationWorld world = new RadiationWorld();
     	//create a new SourceRadiationBlock instance, then set its properties
-    	Block SourceRadiationBlock = new SourceRadiationBlock(Material.ground)
+    	Block SourceRadiationBlock = new SourceRadiationBlock()
 		.setBlockName("SourceRadiationBlock")
 		.setHardness(0.5F)
 		.setStepSound(Block.soundTypeMetal)

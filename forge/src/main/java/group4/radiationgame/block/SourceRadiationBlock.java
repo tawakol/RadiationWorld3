@@ -11,16 +11,15 @@ import net.minecraft.util.IIcon;
 public class SourceRadiationBlock extends Block{
     
 
-	public SourceRadiationBlock (Material material) 
+	public SourceRadiationBlock () 
     {
-            super(material);
+            super(new Material(null));
             
            // setHardness(50F);
            // setStepSound(Block.soundTypeMetal);
            //setBlockName("sourceRadiation");
            //setCreativeTab(CreativeTabs.tabBlock);
-            
-
+           
             
     }
 	
