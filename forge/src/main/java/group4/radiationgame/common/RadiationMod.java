@@ -1,6 +1,7 @@
 package group4.radiationgame.common;
 
 import group4.radiationgame.block.InstructionBook;
+import group4.radiationgame.block.RadiationCleaner;
 import group4.radiationgame.block.SourceRadiationBlock;
 import group4.radiationgame.block.SubRadiationBlock;
 import net.minecraft.block.Block;
@@ -49,14 +50,24 @@ public class RadiationMod
     	Block SubRadBlock = new SubRadiationBlock()
     	.setBlockTextureName("radiationgame:SubRadiationBlock");
     	
-    	
-	//register the new block to the game.
-	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
-	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
+    	//register the new block to the game.
+    	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
+    	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
   
+<<<<<<< .mine
+    	//create a new instruction book and register it
+    	InstructionBook myBook = new InstructionBook();
+=======
 	InstructionBook myBook = new InstructionBook();
 
+>>>>>>> .r22
+    	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
     	
+<<<<<<< .mine
+    	RadiationCleaner radiationCleaner = new RadiationCleaner();
+    	GameRegistry.registerItem(radiationCleaner, radiationCleaner.getUnlocalizedName());
+=======
     GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
+>>>>>>> .r22
     }
 }
