@@ -12,8 +12,10 @@ import net.minecraft.world.World;
 public class SubRadiationBlock extends BlockMycelium{
 
 	public SubRadiationBlock(){
+		
 		super();
-		this.setBlockName("Sub Radiation Block")
+		
+		this.setBlockName("SubRadiationBlock")
 		.setCreativeTab(CreativeTabs.tabBlock)
 		.setBlockUnbreakable()
 		.setLightLevel((float)-1);
