@@ -54,8 +54,9 @@ public class RadiationMod
 	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
 	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
   
-    	InstructionBook myBook = new InstructionBook();
+	InstructionBook myBook = new InstructionBook();
+
     	
-    	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
+    GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
     }
 }
