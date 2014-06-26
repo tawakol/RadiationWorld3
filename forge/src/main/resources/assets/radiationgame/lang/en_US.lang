@@ -1,3 +1,5 @@
 generator.RadiationWorld=Radiation World
+tile.SourceRadiationBlock.name=SourceRadiationBlock
+tile.SubRadiationBlock.name=SubRadiationBlock
 tile.SourceRadiationBlock.name=Source Radiation Block
 tile.SubRadiationBlock.name=Sub Radiation Block
