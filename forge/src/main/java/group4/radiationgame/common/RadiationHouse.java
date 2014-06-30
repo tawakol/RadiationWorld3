@@ -26,33 +26,39 @@ public class RadiationHouse extends WorldGenDungeons{
 	public boolean generate(World world, Random random, int x, int y, int z)
     {
 		
+		//for testing
+		x = 0;
+		y = 64;
+		z = 0;
+		//change later
+		
 	byte b0 = 3;
-    int l = random.nextInt(2) + 2;
-    int i1 = random.nextInt(2) + 2;
+    int width = random.nextInt(2) + 2;
+    int depth = random.nextInt(2) + 2;
     int j1 = 0;
-    int k1;
-    int l1;
-    int i2;
+    int xCurr;
+    int yCurr;
+    int zCurr;
 
-    for (k1 = x - l - 1; k1 <= x + l + 1; ++k1)
+    for (xCurr = x - width - 1; xCurr <= x + width + 1; ++xCurr)
     {
-        for (l1 = y - 1; l1 <= y + b0 + 1; ++l1)
+        for (yCurr = y - 1; yCurr <= y + b0 + 1; ++yCurr)
         {
-            for (i2 = z - i1 - 1; i2 <= z + i1 + 1; ++i2)
+            for (zCurr = z - depth - 1; zCurr <= z + depth + 1; ++zCurr)
             {
-                Material material = world.getBlock(k1, l1, i2).getMaterial();
+                Material material = world.getBlock(xCurr, yCurr, zCurr).getMaterial();
 
-                if (l1 == y - 1 && !material.isSolid())
+                if (yCurr == y - 1 && !material.isSolid())
                 {
                     return false;
                 }
 
-                if (l1 == y + b0 + 1 && !material.isSolid())
+                if (yCurr == y + b0 + 1 && !material.isSolid())
                 {
                     return false;
                 }
 
-                if ((k1 == x - l - 1 || k1 == x + l + 1 || i2 == z - i1 - 1 || i2 == z + i1 + 1) && l1 == y && world.isAirBlock(k1, l1, i2) && world.isAirBlock(k1, l1 + 1, i2))
+                if ((xCurr == x - width - 1 || xCurr == x + width + 1 || zCurr == z - depth - 1 || zCurr == z + depth + 1) && yCurr == y && world.isAirBlock(xCurr, yCurr, zCurr) && world.isAirBlock(xCurr, yCurr + 1, zCurr))
                 {
                     ++j1;
                 }
@@ -62,89 +68,82 @@ public class RadiationHouse extends WorldGenDungeons{
 
     if (j1 >= 1 && j1 <= 5)
     {
-        for (k1 = x - l - 1; k1 <= x + l + 1; ++k1)
+        for (xCurr = x - width - 1; xCurr <= x + width + 1; ++xCurr)
         {
-            for (l1 = y + b0; l1 >= y - 1; --l1)
+            for (yCurr = y + b0; yCurr >= y - 1; --yCurr)
             {
-                for (i2 = z - i1 - 1; i2 <= z + i1 + 1; ++i2)
+                for (zCurr = z - depth - 1; zCurr <= z + depth + 1; ++zCurr)
                 {
-                    if (k1 != x - l - 1 && l1 != y - 1 && i2 != z - i1 - 1 && k1 != x + l + 1 && l1 != y + b0 + 1 && i2 != z + i1 + 1)
+                    if (xCurr != x - width - 1 && yCurr != y - 1 && zCurr != z - depth - 1 && xCurr != x + width + 1 && yCurr != y + b0 + 1 && zCurr != z + depth + 1)
                     {
-                        world.setBlockToAir(k1, l1, i2);
+                        world.setBlockToAir(xCurr, yCurr, zCurr);
                     }
-                    else if (l1 >= 0 && !world.getBlock(k1, l1 - 1, i2).getMaterial().isSolid())
+                    else if (yCurr >= 0 && !world.getBlock(xCurr, yCurr - 1, zCurr).getMaterial().isSolid())
                     {
-                        world.setBlockToAir(k1, l1, i2);
+                        world.setBlockToAir(xCurr, yCurr, zCurr);
                     }
-                    else if (world.getBlock(k1, l1, i2).getMaterial().isSolid())
+                    else if (world.getBlock(xCurr, yCurr, zCurr).getMaterial().isSolid())
                     {
-                        if (l1 == y - 1 && random.nextInt(4) != 0)
-                        {
-                            world.setBlock(k1, l1, i2, new SubRadiationBlock(), 0, 2);
-                        }
-                        else
-                        {
-                            world.setBlock(k1, l1, i2, new SubRadiationBlock(), 0, 2);
-                        }
+                        
+                        world.setBlock(xCurr, yCurr, zCurr, new SubRadiationBlock(), 0, 2);
+                       
                     }
                 }
             }
         }
 
-        k1 = 0;
+        xCurr = 0;
 
-        while (k1 < 2)
+        while (xCurr < 2)
         {
-            l1 = 0;
+            yCurr = 0;
 
             while (true)
             {
-                if (l1 < 3)
+                if (yCurr < 3)
                 {
-                    label101:
+                    
                     {
-                        i2 = x + random.nextInt(l * 2 + 1) - l;
-                        int j2 = z + random.nextInt(i1 * 2 + 1) - i1;
+                        zCurr = x + random.nextInt(width * 2 + 1) - width;
+                        int j2 = z + random.nextInt(depth * 2 + 1) - depth;
 
-                        if (world.isAirBlock(i2, y, j2))
+                        if (world.isAirBlock(zCurr, y, j2))
                         {
                             int k2 = 0;
 
-                            if (world.getBlock(i2 - 1, y, j2).getMaterial().isSolid())
+                            if (world.getBlock(zCurr - 1, y, j2).getMaterial().isSolid())
                             {
                                 ++k2;
                             }
 
-                            if (world.getBlock(i2 + 1, y, j2).getMaterial().isSolid())
+                            if (world.getBlock(zCurr + 1, y, j2).getMaterial().isSolid())
                             {
                                 ++k2;
                             }
 
-                            if (world.getBlock(i2, y, j2 - 1).getMaterial().isSolid())
+                            if (world.getBlock(zCurr, y, j2 - 1).getMaterial().isSolid())
                             {
                                 ++k2;
                             }
 
-                            if (world.getBlock(i2, y, j2 + 1).getMaterial().isSolid())
+                            if (world.getBlock(zCurr, y, j2 + 1).getMaterial().isSolid())
                             {
                                 ++k2;
                             }
 
                         }
 
-                        ++l1;
+                        ++yCurr;
                         continue;
                     }
                 }
 
-                ++k1;
+                ++xCurr;
                 break;
             }
         }
 
         world.setBlock(x, y, z, new SourceRadiationBlock(), 0, 2);
-        TileEntityMobSpawner tileentitymobspawner = (TileEntityMobSpawner)world.getTileEntity(x, y, z);
-
 
         return true;
     }
