@@ -46,22 +46,26 @@ public class RadiationHouse extends WorldGenDungeons{
         {
             for (zCurr = z - depth - 1; zCurr <= z + depth + 1; ++zCurr)
             {
-                Material material = world.getBlock(xCurr, yCurr, zCurr).getMaterial();
+            	Material material = world.getBlock(xCurr, yCurr, zCurr).getMaterial();
 
                 if (yCurr == y - 1 && !material.isSolid())
                 {
+                	System.out.println("Couldnt generate");
                     return false;
                 }
 
                 if (yCurr == y + b0 + 1 && !material.isSolid())
-                {
+                {	
+                	System.out.println("Couldnt generate");
                     return false;
                 }
-
+				
                 if ((xCurr == x - width - 1 || xCurr == x + width + 1 || zCurr == z - depth - 1 || zCurr == z + depth + 1) && yCurr == y && world.isAirBlock(xCurr, yCurr, zCurr) && world.isAirBlock(xCurr, yCurr + 1, zCurr))
                 {
-                    ++j1;
+                	++j1;
                 }
+                
+                
             }
         }
     }
@@ -80,7 +84,7 @@ public class RadiationHouse extends WorldGenDungeons{
                     }
                     else if (yCurr >= 0 && !world.getBlock(xCurr, yCurr - 1, zCurr).getMaterial().isSolid())
                     {
-                        world.setBlockToAir(xCurr, yCurr, zCurr);
+                    	world.setBlockToAir(xCurr, yCurr, zCurr);
                     }
                     else if (world.getBlock(xCurr, yCurr, zCurr).getMaterial().isSolid())
                     {
@@ -149,6 +153,7 @@ public class RadiationHouse extends WorldGenDungeons{
     }
     else
     {
+    	System.out.println("Couldnt generate");
         return false;
     }
 }
