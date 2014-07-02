@@ -3,6 +3,7 @@ package group4.radiationgame.common;
 import java.util.Random;
 
 import cpw.mods.fml.common.IWorldGenerator;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -20,12 +21,20 @@ public class RadiationWorld implements IWorldGenerator{
 	public RadiationWorld(){
 		WorldType RadiationWorld = new WorldType("RadiationWorld");
 		
+		
 	}
 
+	
+	//never gets called WTF why
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,
 			IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		// TODO Auto-generated method stub
+		System.out.println("gets called by system");
+		
+		RadiationHouse house = new RadiationHouse();
+    	house.generate(world, new Random(), 0, 64, 0);
+    	
 		
 	}
 
