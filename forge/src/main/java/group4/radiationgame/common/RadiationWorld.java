@@ -20,12 +20,6 @@ public class RadiationWorld implements IWorldGenerator{
 	public RadiationWorld(){
 		WorldType RadiationWorld = new WorldType("RadiationWorld");
 		
-		
-		//didnt work
-		//GenLayerBiome radWorld = new GenLayerBiome((long)1234123412, RadiationWorld.getBiomeLayer((long)12341234, new GenLayer((long)1234123412)), this);
-		
-		//to restrict mobs set time to always day
-	
 	}
 
 	@Override

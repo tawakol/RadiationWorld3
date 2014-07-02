@@ -1,15 +1,20 @@
 package group4.radiationgame.common;
 
+import java.util.Random;
+
 import group4.radiationgame.block.InstructionBook;
 import group4.radiationgame.block.RadiationCleaner;
 import group4.radiationgame.block.SourceRadiationBlock;
 import group4.radiationgame.block.SubRadiationBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraftforge.common.BiomeDictionary;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -50,21 +55,46 @@ public class RadiationMod
     	Block SubRadBlock = new SubRadiationBlock()
     	.setBlockTextureName("radiationgame:SubRadiationBlock");
     	
+
+    	/*
+		World eerff = Minecraft.getMinecraft().theWorld;
+    	RadiationHouse house = new RadiationHouse();
+    	house.generate(eerff, new Random(), 0, 64, 0);
+    	*/
+    	
+    	
     	//register the new block to the game.
     	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
     	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
+<<<<<<< .mine
+    	//register the new block to the game.
+    	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
+    	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
+=======
   
+>>>>>>> .r27
     	//create a new instruction book and register it
     	InstructionBook myBook = new InstructionBook();
+<<<<<<< .mine
+    
+=======
 
 
+>>>>>>> .r27
     	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
     	
+<<<<<<< .mine
+=======
 
+>>>>>>> .r27
     	RadiationCleaner radiationCleaner = new RadiationCleaner();
     	GameRegistry.registerItem(radiationCleaner, radiationCleaner.getUnlocalizedName());
+<<<<<<< .mine
+    	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
+=======
 
     GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
 
+>>>>>>> .r27
     }
 }
