@@ -56,45 +56,17 @@ public class RadiationMod
     	.setBlockTextureName("radiationgame:SubRadiationBlock");
     	
 
-    	/*
-		World eerff = Minecraft.getMinecraft().theWorld;
-    	RadiationHouse house = new RadiationHouse();
-    	house.generate(eerff, new Random(), 0, 64, 0);
-    	*/
-    	
-    	
     	//register the new block to the game.
     	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
     	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
-<<<<<<< .mine
-    	//register the new block to the game.
-    	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
-    	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
-=======
-  
->>>>>>> .r27
     	//create a new instruction book and register it
     	InstructionBook myBook = new InstructionBook();
-<<<<<<< .mine
-    
-=======
 
 
->>>>>>> .r27
     	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
     	
-<<<<<<< .mine
-=======
-
->>>>>>> .r27
     	RadiationCleaner radiationCleaner = new RadiationCleaner();
     	GameRegistry.registerItem(radiationCleaner, radiationCleaner.getUnlocalizedName());
-<<<<<<< .mine
-    	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
-=======
 
-    GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
-
->>>>>>> .r27
     }
 }
