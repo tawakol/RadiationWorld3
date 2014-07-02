@@ -28,25 +28,27 @@ public class RadiationCleaner extends Item{
 		 int radiationCounter = 0;
 		 int cleanedBlocks = 0;
 		 
-		 System.out.println("X" + X + "Y" + Y + "Z" + Z);
-		 System.out.println("INT VALUES OF X, Y, Z: " + (int)X + ", " + (int)Y + ", " + (int)Z);
+		 //System.out.println("X" + X + "Y" + Y + "Z" + Z);
+		// System.out.println("INT VALUES OF X, Y, Z: " + (int)X + ", " + (int)Y + ", " + (int)Z);
+		 for (int j = -2; j<3; j++) {
 		 for (int i = 0; i < 4; i++)
          {
          	
          	//System.out.print((world.getBlock(X, Y, Z) == Blocks.dirt) +" " +(world.getBlock(X, Y, Z) == Blocks.air));
          	
-         	if ( (world.getBlock((int)X+i, (int)Y+i, (int)Z+i) == Blocks.grass))
+         	if ( (world.getBlock((int)X+i, (int)Y-1, (int)Z+j) == Blocks.mycelium))
          	{
          		radiationCounter++;
          		System.out.println("Number of radiation blocks: " + radiationCounter);
-         		world.setBlock((int)X+i, (int)Y+i, (int)Z+i, Blocks.dragon_egg);
+         		world.setBlock((int)X+i, (int)Y-1, (int)Z+j, Blocks.gold_ore);
          		cleanedBlocks++;
          	}
-         	System.out.println("\n");
+         	//System.out.println("\n");
          	
        
          	
          }
+		 }
 		 return itemStack;
 	    }
 	}
