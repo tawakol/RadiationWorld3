@@ -54,20 +54,17 @@ public class RadiationMod
     	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
     	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
   
-<<<<<<< .mine
     	//create a new instruction book and register it
     	InstructionBook myBook = new InstructionBook();
-=======
-	InstructionBook myBook = new InstructionBook();
 
->>>>>>> .r22
+
     	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
     	
-<<<<<<< .mine
+
     	RadiationCleaner radiationCleaner = new RadiationCleaner();
     	GameRegistry.registerItem(radiationCleaner, radiationCleaner.getUnlocalizedName());
-=======
+
     GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
->>>>>>> .r22
+
     }
 }

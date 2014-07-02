@@ -25,18 +25,26 @@ public class RadiationCleaner extends Item{
 		 double Y = EntityPlayer.posY;
 		 double Z = EntityPlayer.posZ;
 		 
-		 		 
-		 for (int l = 0; l < 4; ++l)
+		 int radiationCounter = 0;
+		 int cleanedBlocks = 0;
+		 
+		 System.out.println("X" + X + "Y" + Y + "Z" + Z);
+		 System.out.println("INT VALUES OF X, Y, Z: " + (int)X + ", " + (int)Y + ", " + (int)Z);
+		 for (int i = 0; i < 4; i++)
          {
          	
          	//System.out.print((world.getBlock(X, Y, Z) == Blocks.dirt) +" " +(world.getBlock(X, Y, Z) == Blocks.air));
          	
-         	if ( (world.getBlock((int)X, (int)Y, (int)Z) == Blocks.mycelium));
+         	if ( (world.getBlock((int)X+i, (int)Y+i, (int)Z+i) == Blocks.grass))
          	{
-         		System.out.println(" CHANGE");
-         		world.setBlock((int)X, (int)Y, (int)Z, Blocks.anvil);
+         		radiationCounter++;
+         		System.out.println("Number of radiation blocks: " + radiationCounter);
+         		world.setBlock((int)X+i, (int)Y+i, (int)Z+i, Blocks.dragon_egg);
+         		cleanedBlocks++;
          	}
          	System.out.println("\n");
+         	
+       
          	
          }
 		 return itemStack;
