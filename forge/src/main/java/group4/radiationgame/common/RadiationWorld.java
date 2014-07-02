@@ -17,14 +17,45 @@ import net.minecraft.world.gen.ChunkProviderHell;
 import net.minecraft.world.WorldProvider;
 
 
-public class RadiationWorld implements IWorldGenerator{
-	public RadiationWorld(){
-		WorldType RadiationWorld = new WorldType("RadiationWorld");
-		
-		
-	}
+/**
+ * @author JDuck404
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
 
+public class RadiationWorld implements IWorldGenerator{
 	
+	WorldType RadiationWorld;
+	
+	
+	/**
+	 * Constructor
+	 * 
+	 * Creates new WorldType with the string "RadiationWorld" as a title
+	 */
+	public RadiationWorld(){
+		RadiationWorld = new WorldType("RadiationWorld");
+	}
+	
+	/**
+	 * Get the world type
+	 * 
+	 * @return RadiationWorld
+	 */
+	public WorldType getWorldType(){
+		return RadiationWorld;
+	}
+	
+	
+	
+	/**
+	 * 
+	 * 
+	 * 
+	 */
 	//never gets called WTF why
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,
@@ -34,7 +65,6 @@ public class RadiationWorld implements IWorldGenerator{
 		
 		RadiationHouse house = new RadiationHouse();
     	house.generate(world, new Random(), 0, 64, 0);
-    	
 		
 	}
 

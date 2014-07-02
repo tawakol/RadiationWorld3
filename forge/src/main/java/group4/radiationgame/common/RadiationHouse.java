@@ -15,6 +15,13 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.*;
 import net.minecraftforge.common.ChestGenHooks;
 
+/**
+ * 
+ * @author JDuck404
+ *
+ * Variation on the dungeon generator to serve as our Radio active source area 
+ * 
+ */
 
 public class RadiationHouse extends WorldGenDungeons{
 	
@@ -23,6 +30,16 @@ public class RadiationHouse extends WorldGenDungeons{
 	}
 	
 
+	/**
+	 * @param world
+	 * @param random
+	 * @param x
+	 * @param y
+	 * @param z
+	 * 
+	 * Generates a box with walls made of SubRadiationBlock and puts a SourceRadiationBlock inside
+	 * 
+	 */
 	public boolean generate(World world, Random random, int x, int y, int z)
     {
 		

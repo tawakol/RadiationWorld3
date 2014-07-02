@@ -11,7 +11,14 @@ import net.minecraft.item.ItemEditableBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/**
+ * 
+ * @author JDuck404
+ *
+ * Item given to the player to clean up the sub radiation blocks
+ */
 public class RadiationCleaner extends Item{
+	
 	
 	public RadiationCleaner(){
 		super();
@@ -21,7 +28,14 @@ public class RadiationCleaner extends Item{
 		LanguageRegistry.addName(this, "The Radiation Eradicator");
 
 	}
-	
+	/**
+	 * @param itemStack
+	 * @param world
+	 * @param EntityPlayer
+	 * 
+	 * 
+	 * On use search the immediate vicinity of the player for SubRadiationBlock's and replaces them with grass
+	 */
 	 public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer EntityPlayer)
 	    {
 		 double X = EntityPlayer.posX;

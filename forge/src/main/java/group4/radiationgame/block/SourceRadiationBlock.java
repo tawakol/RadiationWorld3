@@ -6,7 +6,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
-
+/**
+ * 
+ * @author JDuck404
+ *
+ * Source radiation block that the player has to destroy to win the game
+ *	
+ */
 //Create a new block child class
 public class SourceRadiationBlock extends Block{
     
