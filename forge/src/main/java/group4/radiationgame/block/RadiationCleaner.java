@@ -1,5 +1,8 @@
 package group4.radiationgame.block;
+import group4.radiationgame.common.RadiationMod;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -28,6 +31,8 @@ public class RadiationCleaner extends Item{
 		 int radiationCounter = 0;
 		 int cleanedBlocks = 0;
 		 
+		 SubRadiationBlock rblock = new SubRadiationBlock();
+		 
 		 //System.out.println("X" + X + "Y" + Y + "Z" + Z);
 		// System.out.println("INT VALUES OF X, Y, Z: " + (int)X + ", " + (int)Y + ", " + (int)Z);
 		 for (int j = -2; j<3; j++) {
@@ -36,7 +41,7 @@ public class RadiationCleaner extends Item{
          	
          	//System.out.print((world.getBlock(X, Y, Z) == Blocks.dirt) +" " +(world.getBlock(X, Y, Z) == Blocks.air));
          	
-         	if ( (world.getBlock((int)X+i, (int)Y-1, (int)Z+j) == Blocks.mycelium))
+         	if ( (world.getBlock((int)X+i, (int)Y-1, (int)Z+j) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
          	{
          		radiationCounter++;
          		System.out.println("Number of radiation blocks: " + radiationCounter);
