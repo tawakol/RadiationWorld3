@@ -30,7 +30,4 @@ public class SourceRadiationBlock extends Block{
     }
 	
 	
-	
-	
-
 }

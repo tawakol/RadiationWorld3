@@ -23,7 +23,7 @@ public class SubRadiationBlock extends BlockMycelium{
 	}
 	
 	/**
-	 * 
+	 * Gets called at random by the world and changes adjacent blocks to a copy of itself
 	 * 
 	 */
 	
@@ -32,6 +32,7 @@ public class SubRadiationBlock extends BlockMycelium{
 	public void updateTick(World world, int x, int y, int z, Random random)
     {
 		
+		//check local isntance of game
         if (!world.isRemote)
         {    
             

@@ -21,8 +21,7 @@ import net.minecraft.world.WorldProvider;
  * @author JDuck404
  * 
  * 
- * 
- * 
+ * Main mod file
  * 
  */
 
@@ -52,7 +51,9 @@ public class RadiationWorld implements IWorldGenerator{
 	
 	
 	/**
+	 * Generate
 	 * 
+	 * Should get called at start up of a new instance of a world of that type
 	 * 
 	 * 
 	 */

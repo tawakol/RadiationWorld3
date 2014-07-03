@@ -19,7 +19,7 @@ import net.minecraftforge.common.ChestGenHooks;
  * 
  * @author JDuck404
  *
- * Variation on the dungeon generator to serve as our Radio active source area 
+ * Variation on the dungeon generator to serve as our Radioactive source area 
  * 
  */
 
@@ -56,7 +56,12 @@ public class RadiationHouse extends WorldGenDungeons{
     int xCurr;
     int yCurr;
     int zCurr;
-
+    
+    /**
+     * Check that the area is valid for house generation
+     * 
+     * 
+     */
     for (xCurr = x - width - 1; xCurr <= x + width + 1; ++xCurr)
     {
         for (yCurr = y - 1; yCurr <= y + b0 + 1; ++yCurr)
@@ -87,6 +92,12 @@ public class RadiationHouse extends WorldGenDungeons{
         }
     }
 
+    
+    /**
+     * If checks that requirements are met 
+     * 
+     * Loops iterate through the volume and change blocks as required
+     */
     if (j1 >= 1 && j1 <= 5)
     {
         for (xCurr = x - width - 1; xCurr <= x + width + 1; ++xCurr)
