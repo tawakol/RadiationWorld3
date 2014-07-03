@@ -1,10 +1,13 @@
 package group4.radiationgame.block;
+import java.util.Random;
+
 import group4.radiationgame.common.RadiationMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -16,12 +19,13 @@ import net.minecraft.world.World;
 
 /**
  * 
- * @author JDuck404
+ * @author Group4
  *
  * Item given to the player to clean up the sub radiation blocks
  */
 public class RadiationCleaner extends Item{
 	
+	static int count = 0;
 	//Name it Decon-90 in game because thats the name of a real radiation glassware cleaner
 	
 	public RadiationCleaner(){
@@ -57,7 +61,7 @@ public class RadiationCleaner extends Item{
 					 if ( (world.getBlock((int)X+i, (int)Y-k, (int)Z+j) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
 					 {
 					 
-						 world.setBlock((int)X+i, (int)Y-k, (int)Z+j, Blocks.waterlily);
+					 world.setBlock((int)X+i, (int)Y-1, (int)Z+j, Blocks.waterlily);
  
 						 cleanedBlocks++;
 						 radiationCounter++;
@@ -67,7 +71,37 @@ public class RadiationCleaner extends Item{
 		 }
 		 
 		 //In game chat output of number of blocks in the area
-		 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
+		// Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
 		 return itemStack;
+		
 	    }
+	 	public void onUpdate(ItemStack item, World world, Entity entity, int x, boolean any){
+	 		if(count == 20){
+	 		 double X = entity.posX;
+			 double Y = entity.posY;
+			 double Z = entity.posZ;
+			 
+			 int radiationCounter = 0;
+			 
+			 
+			 for (int j = -2; j < 3; j++) {
+				 for (int i = 0; i < 4; i++){
+					 for(int k = -1; k < 2; k++){
+	         	
+						 if ( (world.getBlock((int)X+i, (int)Y-k, (int)Z+j) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
+						 {
+						 
+						 //world.setBlock((int)X+i, (int)Y-1, (int)Z+j, Blocks.waterlily);
+	 
+							 radiationCounter++;
+						 }
+					 }
+				 }
+			 }
+			 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
+			 count = 0;
+	 	}
+	 		count++;
+	 	}
+	 	
 	}
