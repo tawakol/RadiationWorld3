@@ -81,6 +81,7 @@ public class RadiationMod
     	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
     	
     	RadiationCleaner radiationCleaner = new RadiationCleaner();
+    	radiationCleaner.setTextureName("radiationgame:radiationcleaner");
     	GameRegistry.registerItem(radiationCleaner, radiationCleaner.getUnlocalizedName());
 
     }
