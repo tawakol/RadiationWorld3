@@ -57,12 +57,8 @@ public class RadiationCleaner extends Item{
 					 if ( (world.getBlock((int)X+i, (int)Y-k, (int)Z+j) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
 					 {
 					 
-<<<<<<< .mine
-						 world.setBlock((int)X+i, (int)Y-k, (int)Z+j, Blocks.gold_ore);
-=======
 					 world.setBlock((int)X+i, (int)Y-1, (int)Z+j, Blocks.waterlily);
->>>>>>> .r38
-					 
+ 
 						 cleanedBlocks++;
 						 radiationCounter++;
 					 }
