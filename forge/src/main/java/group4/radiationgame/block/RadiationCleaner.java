@@ -3,12 +3,15 @@ import group4.radiationgame.common.RadiationMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEditableBook;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 
 /**
@@ -19,6 +22,7 @@ import net.minecraft.world.World;
  */
 public class RadiationCleaner extends Item{
 	
+	//Name it Decon-90 in game because thats the name of a real radiation glassware cleaner
 	
 	public RadiationCleaner(){
 		super();
@@ -45,29 +49,24 @@ public class RadiationCleaner extends Item{
 		 int radiationCounter = 0;
 		 int cleanedBlocks = 0;
 		 
-		 SubRadiationBlock rblock = new SubRadiationBlock();
 		 
-		 //System.out.println("X" + X + "Y" + Y + "Z" + Z);
-		// System.out.println("INT VALUES OF X, Y, Z: " + (int)X + ", " + (int)Y + ", " + (int)Z);
 		 for (int j = -2; j<3; j++) {
-		 for (int i = 0; i < 4; i++)
-         {
+			 for (int i = 0; i < 4; i++){
          	
-         	//System.out.print((world.getBlock(X, Y, Z) == Blocks.dirt) +" " +(world.getBlock(X, Y, Z) == Blocks.air));
+				 if ( (world.getBlock((int)X+i, (int)Y-1, (int)Z+j) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
+				 {
+					 
+					 world.setBlock((int)X+i, (int)Y-1, (int)Z+j, Blocks.gold_ore);
+					 
+					 cleanedBlocks++;
+					 radiationCounter++;
+				 }
          	
-         	if ( (world.getBlock((int)X+i, (int)Y-1, (int)Z+j) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
-         	{
-         		radiationCounter++;
-         		System.out.println("Number of radiation blocks: " + radiationCounter);
-         		world.setBlock((int)X+i, (int)Y-1, (int)Z+j, Blocks.gold_ore);
-         		cleanedBlocks++;
-         	}
-         	//System.out.println("\n");
-         	
-       
-         	
-         }
+			 }
 		 }
+		 
+		 //In game chat output of number of blocks in the area
+		 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
 		 return itemStack;
 	    }
 	}

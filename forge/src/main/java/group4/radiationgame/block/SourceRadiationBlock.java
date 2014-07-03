@@ -19,13 +19,13 @@ public class SourceRadiationBlock extends Block{
 
 	public SourceRadiationBlock () 
     {
-            super(new Material(null));
+           super(new Material(null));
             
-           // setHardness(50F);
-           // setStepSound(Block.soundTypeMetal);
-           //setBlockName("sourceRadiation");
-           //setCreativeTab(CreativeTabs.tabBlock);
-           
+           this.setHardness(0.5f);
+           this.setStepSound(Block.soundTypeMetal);
+           this.setBlockName("SourceRadiation");
+           this.setCreativeTab(CreativeTabs.tabBlock);
+           this.setBlockTextureName("radiationgame:SourceRadiationBlock");
             
     }
 	

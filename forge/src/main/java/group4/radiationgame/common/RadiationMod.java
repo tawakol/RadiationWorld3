@@ -65,12 +65,7 @@ public class RadiationMod
     	
     	RadiationWorld world = new RadiationWorld();
     	//create a new SourceRadiationBlock instance, then set its properties
-    	Block SourceRadiationBlock = new SourceRadiationBlock()
-		.setBlockName("SourceRadiationBlock")
-		.setHardness(0.5F)
-		.setStepSound(Block.soundTypeMetal)
-		.setCreativeTab(CreativeTabs.tabBlock)
-		.setBlockTextureName("radiationgame:SourceRadiationBlock");
+    	Block SourceRadiationBlock = new SourceRadiationBlock();
 	
     	// create subRadiation block
     	Block SubRadBlock = new SubRadiationBlock()
@@ -82,7 +77,6 @@ public class RadiationMod
     	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
     	//create a new instruction book and register it
     	InstructionBook myBook = new InstructionBook();
-
 
     	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
     	
