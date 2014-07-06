@@ -2,7 +2,7 @@ package group4.radiationgame.common;
 
 import java.util.Random;
 
-import group4.radiationgame.block.InstructionBook;
+import group4.radiationgame.block.Instructions;
 import group4.radiationgame.block.RadiationCleaner;
 import group4.radiationgame.block.SourceRadiationBlock;
 import group4.radiationgame.block.SubRadiationBlock;
@@ -11,6 +11,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -75,10 +76,8 @@ public class RadiationMod
     	//register the new block to the game.
     	GameRegistry.registerBlock(SourceRadiationBlock, "SourceRadiationBlock");
     	GameRegistry.registerBlock(SubRadBlock, "SubRadiationBlock");
-    	//create a new instruction book and register it
-    	InstructionBook myBook = new InstructionBook();
-
-    	GameRegistry.registerItem(myBook, myBook.getUnlocalizedName());
+    	
+    	GameRegistry.registerWorldGenerator(world, 5);
     	
     	RadiationCleaner radiationCleaner = new RadiationCleaner();
     	radiationCleaner.setTextureName("radiationgame:radiationcleaner");

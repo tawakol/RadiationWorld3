@@ -42,7 +42,7 @@ public class RadiationCleaner extends Item{
 	 * @param EntityPlayer
 	 * 
 	 * 
-	 * On use search the immediate vicinity of the player for SubRadiationBlock's and replaces them with grass
+	 * On use search the immediate vicinity of the player for SubRadiationBlock's and replaces them with lilypads
 	 */
 	 public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer EntityPlayer)
 	    {
@@ -61,7 +61,7 @@ public class RadiationCleaner extends Item{
 					 if ( (world.getBlock((int)X+i, (int)Y-k, (int)Z+j) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
 					 {
 					 
-					 world.setBlock((int)X+i, (int)Y-1, (int)Z+j, Blocks.waterlily);
+					 world.setBlock((int)X+i, (int)Y-k, (int)Z+j, Blocks.waterlily);
  
 						 cleanedBlocks++;
 						 radiationCounter++;

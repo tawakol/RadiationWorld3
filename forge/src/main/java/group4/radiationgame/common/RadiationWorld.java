@@ -1,5 +1,7 @@
 package group4.radiationgame.common;
 
+import group4.radiationgame.block.Instructions;
+
 import java.util.Random;
 
 import cpw.mods.fml.common.IWorldGenerator;
@@ -25,7 +27,7 @@ import net.minecraft.world.WorldProvider;
  * 
  */
 
-public class RadiationWorld implements IWorldGenerator{
+public class RadiationWorld implements IWorldGenerator {
 	
 	WorldType RadiationWorld;
 	
@@ -59,13 +61,13 @@ public class RadiationWorld implements IWorldGenerator{
 	 */
 	//never gets called WTF why
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world,
-			IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+	public void generate(Random random, int chunkX, int chunkZ, World world,IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		// TODO Auto-generated method stub
 		System.out.println("gets called by system");
 		
 		RadiationHouse house = new RadiationHouse();
     	house.generate(world, new Random(), 0, 64, 0);
+
 		
 	}
 
