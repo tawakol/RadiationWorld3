@@ -2,7 +2,7 @@ package group4.radiationgame.common;
 
 import java.util.Random;
 
-import group4.radiationgame.block.Instructions;
+//import group4.radiationgame.block.Instructions;
 import group4.radiationgame.block.RadiationCleaner;
 import group4.radiationgame.block.SourceRadiationBlock;
 import group4.radiationgame.block.SubRadiationBlock;
@@ -48,8 +48,7 @@ public class RadiationMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-		// some example code
-        System.out.println("DIRT BLOCK >> "+Blocks.dirt.getUnlocalizedName());
+		//initialize stuff
     }
     
     

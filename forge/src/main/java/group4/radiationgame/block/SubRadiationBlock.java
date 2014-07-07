@@ -31,25 +31,25 @@ public class SubRadiationBlock extends BlockMycelium{
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
     {
-		
-		//check local isntance of game
-        if (!world.isRemote)
-        {    
-            
-            for (int l = 0; l < 4; ++l)
+	 
+		//attempts seven times to pick a coord set that is valid for changing
+		for (int l = 0; l < 7; ++l)
+		{
+			//generates a random coord within a radius of 2 units
+			int i1 = x + random.nextInt(5) - 3;
+           	int j1 = y + random.nextInt(5) - 3;
+           	int k1 = z + random.nextInt(5) - 3;
+            	
+            //changes grass to SubRadiationBlock if there is air above it (air clause may be unnessasary)
+            if ( (world.getBlock(i1, j1, k1) == Blocks.grass) && (world.getBlock(i1, j1+1, k1) == Blocks.air) )
             {
-            	int i1 = x + random.nextInt(3) - 1;
-            	int j1 = y + random.nextInt(4) - 2;
-            	int k1 = z + random.nextInt(3) - 1;
+            	world.setBlock(i1, j1, k1, this);
+           	}
+            //changes adjcent logs to SubRadiationBlocks
+           	else if( (world.getBlock(i1, j1, k1) == Blocks.log) || (world.getBlock(i1, j1, k1) == Blocks.log2) ){
+            	world.setBlock(i1, j1, k1, this);
+           	}
             	
-            	//System.out.print("\n" + (world.getBlock(i1, j1, k1) == Blocks.grass) +" " +(world.getBlock(i1, j1+1, k1) == Blocks.air));
-            	
-            	if ( (world.getBlock(i1, j1, k1) == Blocks.grass) && (world.getBlock(i1, j1+1, k1) == Blocks.air) )
-            	{
-            		//System.out.println(" CHANGE");
-            		world.setBlock(i1, j1, k1, this);
-            	}
-            }
-        }
+       }
     }
 }

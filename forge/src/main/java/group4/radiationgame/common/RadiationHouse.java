@@ -6,6 +6,8 @@ import group4.radiationgame.block.SubRadiationBlock;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntityChest;
@@ -21,9 +23,14 @@ import net.minecraftforge.common.ChestGenHooks;
  *
  * Variation on the dungeon generator to serve as our Radioactive source area 
  * 
+ * @param generated used to stop threads from making thousands upon thousands of rooms on the map
+ * 
+ * 
  */
 
 public class RadiationHouse extends WorldGenDungeons{
+	
+	private static boolean generated = false;
 	
 	RadiationHouse(){
 		super();
@@ -42,148 +49,75 @@ public class RadiationHouse extends WorldGenDungeons{
 	 */
 	public boolean generate(World world, Random random, int x, int y, int z)
     {
-		
+	
+		if(generated){
+			return true;
+		}
 		//for testing
 		x = 0;
 		y = 64;
 		z = 0;
 		//change later
 		
-	byte b0 = 3;
-    int width = random.nextInt(2) + 2;
-    int depth = random.nextInt(2) + 2;
-    int j1 = 0;
-    int xCurr;
-    int yCurr;
-    int zCurr;
-    
-    /**
-     * Check that the area is valid for house generation
-     * 
-     * 
-     */
-    for (xCurr = x - width - 1; xCurr <= x + width + 1; ++xCurr)
-    {
-        for (yCurr = y - 1; yCurr <= y + b0 + 1; ++yCurr)
-        {
-            for (zCurr = z - depth - 1; zCurr <= z + depth + 1; ++zCurr)
-            {
-            	Material material = world.getBlock(xCurr, yCurr, zCurr).getMaterial();
+		
+		Block sub = new SubRadiationBlock();
+		Block source = new SourceRadiationBlock();
+	
+		
+		byte b0 = 3;
+		int width = random.nextInt(2) + 2;
+		int depth = random.nextInt(2) + 2;
+		int j1 = 2;
+		int xCurr;
+		int yCurr;
+    	int zCurr;
+        
+    	/**
+    	 * If checks that requirements are met 
+    	 * 
+    	 * Loops iterate through the volume and change blocks as required
+    	 */
+    	if (j1 >= 1 && j1 <= 5)
+    	{
+    		for (xCurr = x - width - 1; xCurr <= x + width + 1; ++xCurr)
+    		{
+    			for (yCurr = y + b0; yCurr >= y - 1; --yCurr)
+    			{
+    				for (zCurr = z - depth - 1; zCurr <= z + depth + 1; ++zCurr)
+    				{
+    					//System.out.println("Air at :"+ xCurr + yCurr + zCurr +world.setBlockToAir(xCurr, yCurr, zCurr));
+    					world.setBlockToAir(xCurr, yCurr, zCurr);
+    				}
+    			}
+    		}
 
-                if (yCurr == y - 1 && !material.isSolid())
-                {
-                	System.out.println("Couldnt generate");
-                    return false;
-                }
-
-                if (yCurr == y + b0 + 1 && !material.isSolid())
-                {	
-                	System.out.println("Couldnt generate");
-                    return false;
-                }
-				
-                if ((xCurr == x - width - 1 || xCurr == x + width + 1 || zCurr == z - depth - 1 || zCurr == z + depth + 1) && yCurr == y && world.isAirBlock(xCurr, yCurr, zCurr) && world.isAirBlock(xCurr, yCurr + 1, zCurr))
-                {
-                	++j1;
-                }
-                
-                
-            }
-        }
+        
+    		//new loop to iterate through the outside surafce coords and replace them with SubRadiationBlocks
+    		for (xCurr = x - width - 1; xCurr <= x + width + 1; xCurr++)
+    		{
+    			for (yCurr = y + b0 ; yCurr >= y -1 ; yCurr--)
+    			{
+    				for (zCurr = z - depth - 1; zCurr <= z + depth + 1; zCurr++)
+    				{
+    					if(zCurr == z - depth - 1 || zCurr == z + depth + 1  && yCurr == y + b0 || yCurr == y-1  && xCurr == x - width - 1 || xCurr == x + width + 1){
+    						//System.out.println("Wall at :"+ xCurr + yCurr + zCurr + world.setBlock(xCurr, yCurr, zCurr, GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")));
+    						world.setBlock(xCurr, yCurr, zCurr, GameRegistry.findBlock("RadiationMod", "SubRadiationBlock"));
+    					}
+    				}
+    			}
+    		}
+    		
+    		//aserts that the house has been made correctly and stop furthur attempts
+    		generated = true;
+    		world.setBlock(x, y-1, z, GameRegistry.findBlock("RadiationMod", "SourceRadiationBlock"));
+    		return true;
+    	}
+    	//flag a bad initialization
+    	else
+    	{
+    		System.out.println("Couldnt generate miss 3");
+    		return false;
+    	}	
     }
-
-    
-    /**
-     * If checks that requirements are met 
-     * 
-     * Loops iterate through the volume and change blocks as required
-     */
-    if (j1 >= 1 && j1 <= 5)
-    {
-        for (xCurr = x - width - 1; xCurr <= x + width + 1; ++xCurr)
-        {
-            for (yCurr = y + b0; yCurr >= y - 1; --yCurr)
-            {
-                for (zCurr = z - depth - 1; zCurr <= z + depth + 1; ++zCurr)
-                {
-                    if (xCurr != x - width - 1 && yCurr != y - 1 && zCurr != z - depth - 1 && xCurr != x + width + 1 && yCurr != y + b0 + 1 && zCurr != z + depth + 1)
-                    {
-                        world.setBlockToAir(xCurr, yCurr, zCurr);
-                    }
-                    else if (yCurr >= 0 && !world.getBlock(xCurr, yCurr - 1, zCurr).getMaterial().isSolid())
-                    {
-                    	world.setBlockToAir(xCurr, yCurr, zCurr);
-                    }
-                    else if (world.getBlock(xCurr, yCurr, zCurr).getMaterial().isSolid())
-                    {
-                        
-                        world.setBlock(xCurr, yCurr, zCurr, new SubRadiationBlock(), 0, 2);
-                       
-                    }
-                }
-            }
-        }
-
-        xCurr = 0;
-
-        while (xCurr < 2)
-        {
-            yCurr = 0;
-
-            while (true)
-            {
-                if (yCurr < 3)
-                {
-                    
-                    {
-                        zCurr = x + random.nextInt(width * 2 + 1) - width;
-                        int j2 = z + random.nextInt(depth * 2 + 1) - depth;
-
-                        if (world.isAirBlock(zCurr, y, j2))
-                        {
-                            int k2 = 0;
-
-                            if (world.getBlock(zCurr - 1, y, j2).getMaterial().isSolid())
-                            {
-                                ++k2;
-                            }
-
-                            if (world.getBlock(zCurr + 1, y, j2).getMaterial().isSolid())
-                            {
-                                ++k2;
-                            }
-
-                            if (world.getBlock(zCurr, y, j2 - 1).getMaterial().isSolid())
-                            {
-                                ++k2;
-                            }
-
-                            if (world.getBlock(zCurr, y, j2 + 1).getMaterial().isSolid())
-                            {
-                                ++k2;
-                            }
-
-                        }
-
-                        ++yCurr;
-                        continue;
-                    }
-                }
-
-                ++xCurr;
-                break;
-            }
-        }
-
-        world.setBlock(x, y, z, new SourceRadiationBlock(), 0, 2);
-
-        return true;
-    }
-    else
-    {
-    	System.out.println("Couldnt generate");
-        return false;
-    }
-}
 	
 }

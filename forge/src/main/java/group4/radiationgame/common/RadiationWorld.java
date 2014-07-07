@@ -1,7 +1,5 @@
 package group4.radiationgame.common;
 
-import group4.radiationgame.block.Instructions;
-
 import java.util.Random;
 
 import cpw.mods.fml.common.IWorldGenerator;
@@ -55,17 +53,14 @@ public class RadiationWorld implements IWorldGenerator {
 	/**
 	 * Generate
 	 * 
-	 * Should get called at start up of a new instance of a world of that type
-	 * 
+	 * Creates a new Radiation House and calls it generate method creating a Radiation House at a random Location on the map
 	 * 
 	 */
-	//never gets called WTF why
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		// TODO Auto-generated method stub
-		System.out.println("gets called by system");
 		
 		RadiationHouse house = new RadiationHouse();
+		//using hard coded coords for now
     	house.generate(world, new Random(), 0, 64, 0);
 
 		

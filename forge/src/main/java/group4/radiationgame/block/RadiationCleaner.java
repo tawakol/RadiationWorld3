@@ -13,6 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEditableBook;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
@@ -33,7 +34,7 @@ public class RadiationCleaner extends Item{
 		this.setCreativeTab(CreativeTabs.tabTools);
     	this.setUnlocalizedName("radiationCleaner");
     	this.setTextureName("sword_normal");
-		LanguageRegistry.addName(this, "The Radiation Eradicator");
+		LanguageRegistry.addName(this, "Decon-90");
 
 	}
 	/**
@@ -42,66 +43,77 @@ public class RadiationCleaner extends Item{
 	 * @param EntityPlayer
 	 * 
 	 * 
-	 * On use search the immediate vicinity of the player for SubRadiationBlock's and replaces them with lilypads
+	 * On use search the immediate vicinity of the player for SubRadiationBlock's and replaces them with mellons
 	 */
 	 public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer EntityPlayer)
-	    {
+	 {
 		 double X = EntityPlayer.posX;
 		 double Y = EntityPlayer.posY;
-		 double Z = EntityPlayer.posZ;
+		 double Z = EntityPlayer.posZ;		 
 		 
-		 int radiationCounter = 0;
-		 int cleanedBlocks = 0;
-		 
-		 
-		 for (int j = -2; j < 3; j++) {
-			 for (int i = 0; i < 4; i++){
-				 for(int k = -1; k < 2; k++){
+		 for (int i = (int)X - 2; i < (int)X + 2; i++) {
+			for (int j = (int)Y - 2; i < (int)Y + 2; i++){
+				 for(int k = (int)Z - 2; k < (int)Z + 2; k++){
          	
-					 if ( (world.getBlock((int)X+i, (int)Y-k, (int)Z+j) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
+					 if ( (world.getBlock(i, j, k) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
 					 {
-					 
-					 world.setBlock((int)X+i, (int)Y-k, (int)Z+j, Blocks.waterlily);
- 
-						 cleanedBlocks++;
-						 radiationCounter++;
+						 world.setBlock(i, j, k, Blocks.melon_block);
 					 }
 				 }
 			 }
 		 }
-		 
-		 //In game chat output of number of blocks in the area
-		// Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
-		 return itemStack;
+		return itemStack;
 		
-	    }
-	 	public void onUpdate(ItemStack item, World world, Entity entity, int x, boolean any){
-	 		if(count == 20){
-	 		 double X = entity.posX;
-			 double Y = entity.posY;
-			 double Z = entity.posZ;
-			 
-			 int radiationCounter = 0;
-			 
-			 
-			 for (int j = -2; j < 3; j++) {
-				 for (int i = 0; i < 4; i++){
-					 for(int k = -1; k < 2; k++){
-	         	
-						 if ( (world.getBlock((int)X+i, (int)Y-k, (int)Z+j) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
-						 {
-						 
-						 //world.setBlock((int)X+i, (int)Y-1, (int)Z+j, Blocks.waterlily);
+	 }
 	 
-							 radiationCounter++;
-						 }
-					 }
-				 }
-			 }
-			 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
-			 count = 0;
+	 /**
+		 * @param itemStack
+		 * @param world
+		 * @param EntityPlayer
+		 * 
+		 * 
+		 * onUpdate the item will check within the area for SubRadiationBlocks blocks and display that information
+		 * to the player as a chat message
+		 * 
+		 *  Depending on this value the player will be given a potion effect,one to heal when few blocks are near and 
+		 *  one to harm when more are near 
+		 */
+	 public void onUpdate(ItemStack item, World world, Entity entity, int x, boolean any){
+	 	if(count == 100){
+	 		double X = entity.posX;
+	 		double Y = entity.posY;
+	 		double Z = entity.posZ;
+			 
+		 	int radiationCounter = 0;
+			 	 
+		 	for (int i = (int)X - 3; i < (int)X + 3; i++) {
+				for (int j = (int)Y - 3; i < (int)Y + 3; i++){
+				 	for(int k = (int)Z - 3; k < (int)Z + 3; k++){
+	         	
+					 	if ( (world.getBlock(i, j, k) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
+					 	{
+						 	radiationCounter++;
+					 	}
+				 	}
+			 	}
+		 	}
+		 	
+		 	//Adds poison effect to the player when they are near the radiation blocks a number of radiation blocks
+		 	
+		 	//Don't have correct ID's needs fix 
+		 	if(radiationCounter < 3){
+		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(10, 5));
+		 	}else if(radiationCounter < 6){
+		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5));
+		 	}else if(radiationCounter < 11){
+		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5, 2));
+		 	}else
+		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5, 4));
+		
+		 	Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
+		 	count = 0;
 	 	}
-	 		count++;
-	 	}
+	 	count++;
+	 }
 	 	
-	}
+}
