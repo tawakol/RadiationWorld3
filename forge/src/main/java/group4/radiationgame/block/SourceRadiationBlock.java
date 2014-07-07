@@ -28,6 +28,7 @@ public class SourceRadiationBlock extends Block{
            this.setBlockTextureName("radiationgame:SourceRadiationBlock");
             
     }
+
 	public float getHardness()
 	{
 		return this.getHardness();
@@ -36,7 +37,6 @@ public class SourceRadiationBlock extends Block{
 	{
 		return this.getBlockName();
 	}
-	
 	
 	
 }
