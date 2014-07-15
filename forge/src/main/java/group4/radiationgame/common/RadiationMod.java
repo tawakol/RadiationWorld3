@@ -2,6 +2,8 @@ package group4.radiationgame.common;
 
 import java.util.Random;
 
+
+import group4.radiationgame.block.InstructionBook;
 //import group4.radiationgame.block.Instructions;
 import group4.radiationgame.block.RadiationCleaner;
 import group4.radiationgame.block.SourceRadiationBlock;
@@ -81,6 +83,10 @@ public class RadiationMod
     	RadiationCleaner radiationCleaner = new RadiationCleaner();
     	radiationCleaner.setTextureName("radiationgame:radiationcleaner");
     	GameRegistry.registerItem(radiationCleaner, radiationCleaner.getUnlocalizedName());
+    	
+    	InstructionBook book1 = new InstructionBook();
+    	
+    	GameRegistry.registerItem(book1, "myBook");
 
     }
 }

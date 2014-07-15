@@ -79,16 +79,16 @@ public class RadiationCleaner extends Item{
 		 *  one to harm when more are near 
 		 */
 	 public void onUpdate(ItemStack item, World world, Entity entity, int x, boolean any){
-	 	if(count == 100){
+	 	if(count == 150){
 	 		double X = entity.posX;
 	 		double Y = entity.posY;
 	 		double Z = entity.posZ;
 			 
 		 	int radiationCounter = 0;
 			 	 
-		 	for (int i = (int)X - 3; i < (int)X + 3; i++) {
-				for (int j = (int)Y - 3; i < (int)Y + 3; i++){
-				 	for(int k = (int)Z - 3; k < (int)Z + 3; k++){
+		 	for (int i = (int)X - 30; i < (int)X + 30; i++) {
+				for (int j = (int)Y - 30; i < (int)Y + 30; i++){
+				 	for(int k = (int)Z - 30; k < (int)Z + 30; k++){
 	         	
 					 	if ( (world.getBlock(i, j, k) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
 					 	{
@@ -102,9 +102,9 @@ public class RadiationCleaner extends Item{
 		 	
 		 	//Don't have correct ID's needs fix 
 		 	if(radiationCounter < 3){
-		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(10, 5));
+		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(20, 50000, 100));
 		 	}else if(radiationCounter < 6){
-		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5));
+		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5, 1));
 		 	}else if(radiationCounter < 11){
 		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5, 2));
 		 	}else
