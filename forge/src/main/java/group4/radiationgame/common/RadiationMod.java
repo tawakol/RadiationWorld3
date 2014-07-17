@@ -3,9 +3,6 @@ package group4.radiationgame.common;
 import java.util.Random;
 
 
-
-
-
 import group4.radiationgame.block.InstructionBook;
 //import group4.radiationgame.block.Instructions;
 import group4.radiationgame.block.RadiationCleaner;
@@ -99,5 +96,6 @@ public class RadiationMod
     	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SourceRadiationBlock),1,5,100));
     	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SubRadBlock),1,1,100));
 
+    	
     }
 }
