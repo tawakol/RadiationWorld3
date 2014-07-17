@@ -32,7 +32,7 @@ public class RadiationHouse extends WorldGenDungeons{
 	
 	private static boolean generated = false;
 	
-	RadiationHouse(){
+	public RadiationHouse(){
 		super();
 	}
 	
@@ -49,15 +49,24 @@ public class RadiationHouse extends WorldGenDungeons{
 	 */
 	public boolean generate(World world, Random random, int x, int y, int z)
     {
-	
+		
+		
+		//add requirements
+		//
+		
 		if(generated){
 			return true;
 		}
 		//for testing
-		x = 0;
-		y = 10;
-		z = 0;
+		
+		y = 15;
+		while(!world.canBlockSeeTheSky(x, y, z)){
+			y++;
+		}
+		
+
 		//change later
+		
 		
 		
 		Block sub = new SubRadiationBlock();
@@ -92,7 +101,7 @@ public class RadiationHouse extends WorldGenDungeons{
     		}
 
         
-    		//new loop to iterate through the outside surafce coords and replace them with SubRadiationBlocks
+    		//new loop to iterate through the outside surface coords and replace them with SubRadiationBlocks
     		for (xCurr = x - width - 1; xCurr <= x + width + 1; xCurr++)
     		{
     			for (yCurr = y + b0 ; yCurr >= y -1 ; yCurr--)
