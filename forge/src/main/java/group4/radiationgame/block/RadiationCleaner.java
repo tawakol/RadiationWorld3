@@ -49,19 +49,24 @@ public class RadiationCleaner extends Item{
 	 {
 		 double X = EntityPlayer.posX;
 		 double Y = EntityPlayer.posY;
-		 double Z = EntityPlayer.posZ;		 
+		 double Z = EntityPlayer.posZ;	
+		 int counter = 0;
+		 		 
 		 
 		 for (int i = (int)X - 2; i < (int)X + 2; i++) {
-			for (int j = (int)Y - 2; i < (int)Y + 2; i++){
+			for (int j = (int)Y - 2; j < (int)Y + 2; j++){
 				 for(int k = (int)Z - 2; k < (int)Z + 2; k++){
-         	
-					 if ( (world.getBlock(i, j, k) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
+					 if ( (world.getBlock(i, j, k).equals(GameRegistry.findBlock("RadiationMod", "SubRadiationBlock"))))
 					 {
 						 world.setBlock(i, j, k, Blocks.melon_block);
-					 }
+						 EntityPlayer.addChatMessage(new ChatComponentText("Block changed!"));
+					 } //else 
+						 //EntityPlayer.addChatMessage(new ChatComponentText("No radiation blocks in range"));
 				 }
 			 }
 		 }
+		
+		 
 		return itemStack;
 		
 	 }
@@ -86,11 +91,11 @@ public class RadiationCleaner extends Item{
 			 
 		 	int radiationCounter = 0;
 			 	 
-		 	for (int i = (int)X - 30; i < (int)X + 30; i++) {
-				for (int j = (int)Y - 30; i < (int)Y + 30; i++){
-				 	for(int k = (int)Z - 30; k < (int)Z + 30; k++){
+		 	for (int i = (int)X - 3; i < (int)X + 3; i++) {
+				for (int j = (int)Y - 3; j < (int)Y + 3; j++){
+				 	for(int k = (int)Z - 3; k < (int)Z + 3; k++){
 	         	
-					 	if ( (world.getBlock(i, j, k) == GameRegistry.findBlock("RadiationMod", "SubRadiationBlock")))
+				 		if ((world.getBlock(i, j, k).equals(GameRegistry.findBlock("RadiationMod", "SubRadiationBlock"))))
 					 	{
 						 	radiationCounter++;
 					 	}
@@ -109,7 +114,6 @@ public class RadiationCleaner extends Item{
 		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5, 2));
 		 	}else
 		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5, 4));
-		
 		 	Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
 		 	count = 0;
 	 	}

@@ -31,7 +31,8 @@ public class InstructionBook extends ItemEditableBook{
 	}
 	public void putInstructions()
 	{
-		Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("WELCOME USER"));
+		Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Welcome Agent.. You have been recruited to complete a time critical mission that could very well save the world. The enemy has planted a new fangled form of radiation that spreads itself and grows indefinitely!"));
+		Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("In your inventory you will find Decon-90, you will use this to clean the radiation by rightclicking when facing it, follow the radiation to find the source and destroy it! Good luck!"));
 	}
 	
 	
