@@ -60,8 +60,10 @@ public class RadiationCleaner extends Item{
 					 {
 						 world.setBlock(i, j, k, Blocks.melon_block);
 						 EntityPlayer.addChatMessage(new ChatComponentText("Block changed!"));
-					 } //else 
-						 //EntityPlayer.addChatMessage(new ChatComponentText("No radiation blocks in range"));
+					 } else if ((world.getBlock(i,j,k).equals(GameRegistry.findBlock("RadiationMod", "SourceRadiationBlock")))) {
+						 world.setBlock(i,j,k, Blocks.diamond_block);
+						 EntityPlayer.addChatMessage(new ChatComponentText("YOU WON!"));
+					 }
 				 }
 			 }
 		 }
