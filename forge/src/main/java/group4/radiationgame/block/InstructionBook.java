@@ -19,6 +19,8 @@ public class InstructionBook extends ItemEditableBook{
 	
 	public InstructionBook(){
 		super();
+		this.setContainerItem(getContainerItem());
+	
 		this.setCreativeTab(CreativeTabs.tabTools);
     	this.setUnlocalizedName("myBook");
     	this.setTextureName("book_normal");
@@ -36,6 +38,15 @@ public class InstructionBook extends ItemEditableBook{
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
     	putInstructions();
+    	
+    	double X = par3EntityPlayer.posX;
+		double Y = par3EntityPlayer.posY;
+		double Z = par3EntityPlayer.posZ;	
+		 
+    	
+    	
+    	
+    	
         return par1ItemStack;
     }
 	

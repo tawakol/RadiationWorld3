@@ -3,6 +3,9 @@ package group4.radiationgame.common;
 import java.util.Random;
 
 
+
+
+
 import group4.radiationgame.block.InstructionBook;
 //import group4.radiationgame.block.Instructions;
 import group4.radiationgame.block.RadiationCleaner;
@@ -14,16 +17,19 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.ChestGenHooks;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemWritableBook;
 import net.minecraft.nbt.NBTTagList;
 
@@ -87,6 +93,10 @@ public class RadiationMod
     	InstructionBook book1 = new InstructionBook();
     	
     	GameRegistry.registerItem(book1, "myBook");
+    	
+    	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(book1),1,3,065));
+    	
+    	
 
     }
 }

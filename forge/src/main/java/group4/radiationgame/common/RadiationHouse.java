@@ -55,7 +55,7 @@ public class RadiationHouse extends WorldGenDungeons{
 		}
 		//for testing
 		x = 0;
-		y = 64;
+		y = 10;
 		z = 0;
 		//change later
 		
