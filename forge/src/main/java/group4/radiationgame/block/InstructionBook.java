@@ -26,7 +26,7 @@ public class InstructionBook extends ItemEditableBook{
     	this.setTextureName("book_normal");
 		LanguageRegistry.addName(this, "The Instruction Book");
 
-		this.setTextureName("book_normal");
+		this.setTextureName("book_normal"); 
 		
 	}
 	public void putInstructions()
