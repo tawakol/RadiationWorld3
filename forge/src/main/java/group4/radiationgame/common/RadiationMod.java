@@ -94,9 +94,10 @@ public class RadiationMod
     	
     	GameRegistry.registerItem(book1, "myBook");
     	
-    	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(book1),1,3,065));
-    	
-    	
+    	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(book1),1,1,50));
+    	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(radiationCleaner),1,1,50));
+    	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SourceRadiationBlock),1,1,50));
+    	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SubRadBlock),1,1,50));
 
     }
 }
