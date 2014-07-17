@@ -59,9 +59,9 @@ public class RadiationWorld implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		
-		RadiationHouse house = new RadiationHouse();
+		//RadiationHouse house = new RadiationHouse();
 		//using hard coded coords for now
-    	house.generate(world, new Random(), 0, 64, 0);
+    	//house.generate(world, new Random(), 0, 64, 0);
 
 		
 	}
