@@ -1,4 +1,7 @@
 package group4.radiationgame.block;
+import java.util.Random;
+
+import group4.radiationgame.common.RadiationHouse;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreenBook;
@@ -39,14 +42,10 @@ public class InstructionBook extends ItemEditableBook{
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
     	putInstructions();
-    	
-    	double X = par3EntityPlayer.posX;
-		double Y = par3EntityPlayer.posY;
-		double Z = par3EntityPlayer.posZ;	
-		 
-    	
-    	
-    	
+
+    	RadiationHouse house = new RadiationHouse();
+    	 
+    	house.generate(par2World, new Random(), (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ);
     	
         return par1ItemStack;
     }
