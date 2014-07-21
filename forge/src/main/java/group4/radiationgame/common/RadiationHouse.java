@@ -50,7 +50,7 @@ public class RadiationHouse extends WorldGenDungeons{
 	public boolean generate(World world, Random random, int x, int y, int z)
     {
 		
-		
+		y = 15;
 		//add requirements
 		//
 		
@@ -59,16 +59,16 @@ public class RadiationHouse extends WorldGenDungeons{
 		}
 		//for testing
 		
-		y = 15;
+		//math is cool
+		//math.pow(-1, n) is an alternating 1, -1 to make more variation in just one line
+		x = x + (int) ((Math.pow(-1, random.nextInt(4)) * 100) + (Math.pow(-1, random.nextInt(4)) * random.nextInt(30))); 
+		z = z + (int) ((Math.pow(-1, random.nextInt(4)) * 100) + (Math.pow(-1, random.nextInt(4)) * random.nextInt(30)));
+		
 		while(!world.canBlockSeeTheSky(x, y, z)){
 			y++;
 		}
 		
 
-		//change later
-		
-		
-		
 		Block sub = new SubRadiationBlock();
 		Block source = new SourceRadiationBlock();
 	
