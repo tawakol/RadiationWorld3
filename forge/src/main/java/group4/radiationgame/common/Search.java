@@ -54,7 +54,7 @@ public class Search {
 		for(int x = (int)player.posX - radius; x < (int)player.posX + radius; x++){
 			for(int y = (int)player.posY - radius; y < (int)player.posY + radius; y++){
 				for(int z = (int)player.posZ - radius; z < (int)player.posZ + radius; z++){
-					if(world.getBlock(x, y, z) == GameRegistry.findBlock("RadiationMod", blockName)){
+					if(world.getBlock(x, y, z).equals(GameRegistry.findBlock("RadiationMod", blockName))){
 						count++;
 					}	
 				}
@@ -72,7 +72,7 @@ public class Search {
 		for(int x = (int)player.posX - radius; x < (int)player.posX + radius; x++){
 			for(int y = (int)player.posY - radius; y < (int)player.posY + radius; y++){
 				for(int z = (int)player.posZ - radius; z < (int)player.posZ + radius; z++){
-					if(world.getBlock(x, y, z) == GameRegistry.findBlock("RadiationMod", blockName)){
+					if(world.getBlock(x, y, z).equals(GameRegistry.findBlock("RadiationMod", blockName))){
 						coords[0] = x;
 						coords[1] = y;
 						coords[2] = z;
@@ -88,8 +88,39 @@ public class Search {
 	
 	public static void replaceBlockAt(World world, int[] coords, String blockName){
 		
+		world.setBlock(coords[0], coords[1], coords[2], GameRegistry.findBlock("RadiationMod", blockName));
 		
+	}
+	
+	public static boolean findAndReplaceBlockInRaduis(World world, EntityPlayer player, int radius, String blockName){
 		
+		for(int x = (int)player.posX - radius; x < (int)player.posX + radius; x++){
+			for(int y = (int)player.posY - radius; y < (int)player.posY + radius; y++){
+				for(int z = (int)player.posZ - radius; z < (int)player.posZ + radius; z++){
+					if(world.getBlock(x, y, z).equals(GameRegistry.findBlock("RadiationMod", blockName))){
+						return world.setBlock(x, y, z, GameRegistry.findBlock("RadiationMod", blockName));
+					}	
+				}
+			}
+		}
+		return false;
+		
+	}
+	
+	public static int countSearchInRange(World world, EntityPlayer player, int xRange, int yRange, int zRange, String blockName){
+		int count = 0;
+		
+		for(int x = (int)player.posX - xRange; x < (int)player.posX + xRange; x++){
+			for(int y = (int)player.posY - yRange; y < (int)player.posY + yRange; y++){
+				for(int z = (int)player.posZ - zRange; z < (int)player.posZ + zRange; z++){
+					if(world.getBlock(x, y, z) == GameRegistry.findBlock("RadiationMod", blockName)){
+						count ++;
+					}	
+				}
+			}
+		}
+		
+		return count;
 	}
 	
 }
