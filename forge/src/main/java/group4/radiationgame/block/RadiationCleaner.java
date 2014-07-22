@@ -95,9 +95,9 @@ public class RadiationCleaner extends Item{
 			 
 		 	int radiationCounter = 0;
 			 	 
-		 	for (int i = (int)X - 3; i < (int)X + 3; i++) {
-				for (int j = (int)Y - 3; j < (int)Y + 3; j++){
-				 	for(int k = (int)Z - 3; k < (int)Z + 3; k++){
+		 	for (int i = (int)X - 150; i < (int)X + 150; i++) {
+				for (int j = (int)Y - 15; j < (int)Y + 15; j++){
+				 	for(int k = (int)Z - 150; k < (int)Z + 150; k++){
 	         	
 				 		if ((world.getBlock(i, j, k).equals(GameRegistry.findBlock("RadiationMod", "SubRadiationBlock"))))
 					 	{

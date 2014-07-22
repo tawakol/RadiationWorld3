@@ -25,7 +25,7 @@ public class SourceRadiationBlock extends Block{
            this.setStepSound(Block.soundTypeMetal);
            this.setBlockName("SourceRadiation");
            this.setCreativeTab(CreativeTabs.tabBlock);
-           this.setBlockTextureName("radiationgame:SourceRadiationBlock");
+           this.setBlockTextureName("radiationgame:SourceRadiationBlockRed");
             
     }
 

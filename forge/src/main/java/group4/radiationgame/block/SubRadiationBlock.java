@@ -18,7 +18,8 @@ public class SubRadiationBlock extends BlockMycelium{
 		this.setBlockName("SubRadiationBlock")
 		.setCreativeTab(CreativeTabs.tabBlock)
 		.setBlockUnbreakable()
-		.setLightLevel((float)0.7);
+		.setLightLevel((float)0.7)
+		.setBlockTextureName("radiationgame:SourceRadiationBlockYellow");
 		
 	}
 	
