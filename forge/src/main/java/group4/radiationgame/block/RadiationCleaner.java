@@ -8,11 +8,13 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEditableBook;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
@@ -108,15 +110,10 @@ public class RadiationCleaner extends Item{
 		 	//Adds poison effect to the player when they are near the radiation blocks a number of radiation blocks
 		 	
 		 	//Don't have correct ID's needs fix 
-		 	if(radiationCounter < 3){
-		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(20, 50000, 100));
-		 	}else if(radiationCounter < 6){
-		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5, 1));
-		 	}else if(radiationCounter < 11){
-		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5, 2));
-		 	}else
-		 		Minecraft.getMinecraft().thePlayer.addPotionEffect(new PotionEffect(19, 5, 4));
+		 
 		 	Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
+		    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.poison.id, 2 *  radiationCounter, 100));
+
 		 	count = 0;
 	 	}
 	 	count++;
