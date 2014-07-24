@@ -45,16 +45,20 @@ public class InstructionBook extends ItemEditableBook{
 	
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
+    	System.out.println("Getting to before instructions");
     	putInstructions();
 
     	if(first){
+    		System.out.println("Getting inside first");
     		RadiationHouse house = new RadiationHouse();
+    		System.out.println("radiation house created");
     	 	first = false;
     		int[] a = house.generate(par2World, new Random(), (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ);
+    		System.out.println("house generated");
     		houseCoords[0] = a[0];
     		houseCoords[1] = a[1];
     	}
-    	//par3EntityPlayer.addChatMessage(new ChatComponentText(getDirection((int)par3EntityPlayer.posX,(int)par3EntityPlayer.posZ)));
+    	par3EntityPlayer.addChatMessage(new ChatComponentText(getDirection((int)par3EntityPlayer.posX,(int)par3EntityPlayer.posZ)));
         return par1ItemStack;
     }
 	
