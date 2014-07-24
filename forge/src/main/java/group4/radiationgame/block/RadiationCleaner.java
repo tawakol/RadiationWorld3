@@ -112,7 +112,7 @@ public class RadiationCleaner extends Item{
 		 	//Don't have correct ID's needs fix 
 		 
 		 	Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
-		    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.poison.id, 2 *  radiationCounter, 100));
+		    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.poison.id, 2 * radiationCounter, 100));
 
 		 	count = 0;
 	 	}
