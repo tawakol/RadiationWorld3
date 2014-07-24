@@ -22,7 +22,7 @@ public class InstructionBook extends ItemEditableBook{
 	boolean first = true;
 	
 	int[] houseCoords;
-	
+	double distance = 100000;
 	public InstructionBook(){
 		
 		super();
@@ -58,7 +58,9 @@ public class InstructionBook extends ItemEditableBook{
     		houseCoords[0] = a[0];
     		houseCoords[1] = a[1];
     	}
-    	par3EntityPlayer.addChatMessage(new ChatComponentText(getDirection((int)par3EntityPlayer.posX,(int)par3EntityPlayer.posZ)));
+    	
+    	distance = par3EntityPlayer.getDistance(houseCoords[0], 60, houseCoords[1]);
+    	par3EntityPlayer.addChatMessage(new ChatComponentText("You are currently " + (int)distance +" metres far from the source"));
         return par1ItemStack;
     }
 	
