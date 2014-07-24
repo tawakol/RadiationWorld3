@@ -19,11 +19,14 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 public class InstructionBook extends ItemEditableBook{
+	boolean first = true;
+	
+	int[] houseCoords;
 	
 	public InstructionBook(){
+		
 		super();
 		this.setContainerItem(getContainerItem());
-	
 		this.setCreativeTab(CreativeTabs.tabTools);
     	this.setUnlocalizedName("myBook");
     	this.setTextureName("book_normal");
@@ -31,6 +34,7 @@ public class InstructionBook extends ItemEditableBook{
 
 		this.setTextureName("book_normal"); 
 		
+		houseCoords = new int[2];
 	}
 	public void putInstructions()
 	{
@@ -43,11 +47,47 @@ public class InstructionBook extends ItemEditableBook{
     {
     	putInstructions();
 
-    	RadiationHouse house = new RadiationHouse();
-    	 
-    	house.generate(par2World, new Random(), (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ);
-    	
+    	if(first){
+    		RadiationHouse house = new RadiationHouse();
+    	 	first = false;
+    		int[] a = house.generate(par2World, new Random(), (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ);
+    		houseCoords[0] = a[0];
+    		houseCoords[1] = a[1];
+    	}
+    	//par3EntityPlayer.addChatMessage(new ChatComponentText(getDirection((int)par3EntityPlayer.posX,(int)par3EntityPlayer.posZ)));
         return par1ItemStack;
     }
 	
+    public String getDirection(int x, int z){
+    	String s = "Our intel has shown us that the radiation source is ";
+    	double[] a = getUnitVector(x, z);
+    	
+    	if(a[0] > .85){
+    		s += "North of your current position";
+    	}else if(a[0] < -.85){
+    		s += "South of your current position";
+    	}else if(a[1] > .85){
+    		s += "East of your current position";
+    	}else if(a[1] < -.85){
+    		s += "West of your current position";
+    	}else{
+    		s += "In between";
+    	}
+    		
+    		
+    	return s;
+    }
+    private double[] getUnitVector(int x, int z){
+    	double[] a = new double[2];
+    	a[0] = x - houseCoords[0];
+    	a[1] = z - houseCoords[1];
+    	
+    	double len = Math.sqrt(a[0] * a[0] + a[1] * a[1]);
+    	
+    	a[0] = a[0]/len;
+    	a[1] = a[1]/len;
+    	
+    	return a;
+    }
 }
+

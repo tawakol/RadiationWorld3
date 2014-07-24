@@ -30,12 +30,12 @@ import net.minecraftforge.common.ChestGenHooks;
  * 
  */
 
-public class RadiationHouse extends WorldGenDungeons{
+public class RadiationHouse {
 	
 	private static boolean generated = false;
 	
 	public RadiationHouse(){
-		super();
+		
 	}
 	
 
@@ -49,34 +49,19 @@ public class RadiationHouse extends WorldGenDungeons{
 	 * Generates a box with walls made of SubRadiationBlock and puts a SourceRadiationBlock inside
 	 * 
 	 */
-	public boolean generate(World world, Random random, int x, int y, int z)
+	public int[] generate(World world, Random random, int x, int y, int z)
     {
 		
 		int playerX = x;
 		int playerZ = z;
 		
-		if(generated){
-			return true;
-		}
+			
+		
 		String direction =  "Our intelligence has told us that the source of the radiation is  ";
 		//math is cool
 		//math.pow(-1, n) is an alternating 1, -1 to make more variation in just one line
 		x = x + (int) ((Math.pow(-1, random.nextInt(4)) * 105) + (Math.pow(-1, random.nextInt(4)) * random.nextInt(50))); 
 		z = z + (int) ((Math.pow(-1, random.nextInt(4)) * 105) + (Math.pow(-1, random.nextInt(4)) * random.nextInt(50)));
-		
-		if (x - playerX > 0 && z - playerZ > 0){
-			direction += "North-east";
-		}else if(x - playerX > 0 && z - playerZ < 0){
-			direction += "North-west";
-		}else if(x - playerX < 0 && z - playerZ < 0){
-			direction += "South-west";
-		}else{
-			direction += "South-east";
-		}
-		
-		direction += " from your current position";
-		
-		Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(direction));
 		
 		y = 15;
 		
@@ -84,10 +69,9 @@ public class RadiationHouse extends WorldGenDungeons{
 			y++;
 		}
 		
-
-		Block sub = new SubRadiationBlock();
-		Block source = new SourceRadiationBlock();
-	
+		int[] a = new int[2];
+		a[0] = x;
+		a[1] = z;
 		
 		byte b0 = 3;
 		int width = random.nextInt(2) + 2;
@@ -135,14 +119,10 @@ public class RadiationHouse extends WorldGenDungeons{
     		//aserts that the house has been made correctly and stop furthur attempts
     		generated = true;
     		world.setBlock(x, y-1, z, GameRegistry.findBlock("RadiationMod", "SourceRadiationBlock"));
-    		return true;
+    		
     	}
-    	//flag a bad initialization
-    	else
-    	{
-    		System.out.println("Couldnt generate miss 3");
-    		return false;
-    	}	
+    	return a;
+		
     }
 	
 }
