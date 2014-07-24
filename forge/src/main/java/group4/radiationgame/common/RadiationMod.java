@@ -93,6 +93,7 @@ public class RadiationMod
     	
     	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(book1),2,8,100));
     	ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(radiationCleaner),4,10,100));
+    	
 
     	
     }
