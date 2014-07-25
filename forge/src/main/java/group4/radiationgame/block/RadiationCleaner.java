@@ -112,6 +112,7 @@ public class RadiationCleaner extends Item{
 		 	//Don't have correct ID's needs fix 
 		 
 		 	Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Number of radiation blocks: " + radiationCounter));
+		 	//Decrease the health level as the radiation counter changes. When the health drops to 1 heart, kill the player with wither effect.
 		    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.poison.id, 2 * radiationCounter, 100));
 		   if(((EntityLivingBase) entity).getHealth() <= 1.0 ){
 			   ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.wither.id, 90, 100));

@@ -60,8 +60,8 @@ public class RadiationHouse {
 		String direction =  "Our intelligence has told us that the source of the radiation is  ";
 		//math is cool
 		//math.pow(-1, n) is an alternating 1, -1 to make more variation in just one line
-		x = x + (int) ((Math.pow(-1, random.nextInt(4)) * 105) + (Math.pow(-1, random.nextInt(4)) * random.nextInt(50))); 
-		z = z + (int) ((Math.pow(-1, random.nextInt(4)) * 105) + (Math.pow(-1, random.nextInt(4)) * random.nextInt(50)));
+		x = x + (int) ((Math.pow(-1, random.nextInt(4)) * 45) + (Math.pow(-1, random.nextInt(4)) * random.nextInt(20))); 
+		z = z + (int) ((Math.pow(-1, random.nextInt(4)) * 45) + (Math.pow(-1, random.nextInt(4)) * random.nextInt(20)));
 		
 		y = 15;
 		
