@@ -3,6 +3,7 @@ package group4.radiationgame;
 import static org.junit.Assert.*;
 import group4.radiationgame.block.InstructionBook;
 import group4.radiationgame.common.RadiationHouse;
+import net.minecraft.item.ItemStack;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
@@ -31,6 +32,28 @@ public class InstructionBookTest {
 		EasyMock.verify(inBook);
 	}
 	
+	
+	/**
+	 * test for onItemRightClick function for instruction book class
+	 */
+	@Test
+	public void onItemRightClickTest() {
+		
+		// record the status of the easymock object after calling 
+		ItemStack i = null;
+		EasyMock.expect(inBook.onItemRightClick(null, null, null)).andReturn(i);
+		EasyMock.replay(inBook);
+		
+		// call the function after create a new object of it
+		book = inBook;
+		book.onItemRightClick(null, null, null);
+		
+		// verify the status
+		EasyMock.verify(inBook);
+		
+	}
+	
+	
 	/**
 	 * test for getDirection function for instruction book class
 	 */
@@ -48,6 +71,7 @@ public class InstructionBookTest {
 		
 		
 	}
+	
 	
 
 }
